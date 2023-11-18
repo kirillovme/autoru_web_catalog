@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="">Главная</a>
+        </div>
+    </nav>
+
+    <div class="bg-light p-3">
+        <div class="container">
+            <form class="row row-cols-lg-auto g-3 align-items-center" role="search" method="post">
+                {% csrf_token %}
+                <div class="col-12">
+                    {{ form.mark.label_tag }}
+                </div>
+                <div class="col-12">
+                    {{ form.mark }}
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-outline-success" type="submit">Показать</button>
+                </div>
+            </form>
+            {% if models %}
+                <ul>
+                    {% for model in models %}
+                        <li>{{ model.name }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
