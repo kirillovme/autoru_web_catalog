@@ -1,5 +1,5 @@
-from django import forms
 from catalog.models import Mark
+from django import forms
 
 
 class MarkForm(forms.Form):

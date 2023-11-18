@@ -1,10 +1,9 @@
-from django.http import JsonResponse, HttpRequest, HttpResponse
-from django.shortcuts import render
-
 from catalog.forms import MarkForm
 from catalog.models import Mark, Model
 from catalog.parser import parse_autoru
 from django.db import transaction
+from django.http import HttpRequest, HttpResponse, JsonResponse
+from django.shortcuts import render
 
 
 def update_autoru_catalog(request: HttpRequest) -> JsonResponse:
@@ -20,7 +19,7 @@ def update_autoru_catalog(request: HttpRequest) -> JsonResponse:
             mark = mark_objects[mark_name]
             model_objects.extend([Model(name=model_name, mark_id=mark) for model_name in model_names])
         Model.objects.bulk_create(model_objects)
-    return JsonResponse({"status": "success"})
+    return JsonResponse({'status': 'success'})
 
 
 def index(request: HttpRequest) -> HttpResponse:

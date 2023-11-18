@@ -1,6 +1,7 @@
-from typing import Any
-import requests
 import xml.etree.ElementTree as ET
+from typing import Any
+
+import requests
 
 
 def parse_autoru() -> list[tuple[str, Any]]:
